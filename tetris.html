@@ -16,7 +16,7 @@
         //ブロック一つのサイズ(ピクセル)
         const BLOCK_SIZE = 30;
 
-        //キャンバスのサイズ
+        //スクリーンのサイズ
         const SCREEN_W = BLOCK_SIZE * FIELD_COL;
         const SCREEN_H = BLOCK_SIZE * FIELD_ROW;
 
@@ -28,6 +28,7 @@
 
         can.width  = SCREEN_W;
         can.height = SCREEN_H;
+        can.style.border = "4px solid #555";
     
         let tetro = [
             [ 0, 0, 0, 0 ],
