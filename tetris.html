@@ -40,26 +40,30 @@
         let tetro_x = 0;
         let tetro_y = 0;
 
-        //フィールド本体
+        //フィールドの中身
         let field = [];
         
-        for(let y=0; y<FIELD_ROW ; y++ )
+        init();
+        drawAll();
+        
+        //初期化
+        function init()
         {
-            field[y] = [];
-            for(let x=0; x<FIELD_COL ; x++ )
+            for(let y=0; y<FIELD_ROW ; y++ )
             {
-                field[y][x] = 0;
+                field[y] = [];
+                for(let x=0; x<FIELD_COL ; x++ )
+                {
+                     field[y][x] = 0;
+                }
             }
+            //テスト
+            field[5][8] = 1;
+            field[19][0] = 1;
+            field[19][9] = 1;
         }
 
-        //テスト
-        field[5][8] = 1;
-        field[19][0] = 1;
-        field[19][9] = 1;
-
-        drawAll();
-
-        //ブロック一つを描画
+        //ブロック一つを描画する
         function drawBlock(x,y)
         {
             let px = x * BLOCK_SIZE;
