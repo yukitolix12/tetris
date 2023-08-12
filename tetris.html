@@ -23,6 +23,9 @@
             [ 0, 1, 1, 0 ],
             [ 0, 0, 0, 0 ]
         ];
+        //テトロミノの座標
+        let tetro_x = 0;
+        let tetro_y = 0;
 
         for(let y=0; y<TETRO_SIZE ; y++ )
         {
@@ -30,8 +33,8 @@
             {
                 if( tetro[y][x] )
                 {
-                    let px = x * BLOCK_SIZE;
-                    let py = y * BLOCK_SIZE;
+                    let px = (tetro_x + x) * BLOCK_SIZE;
+                    let py = (tetro_y + y) * BLOCK_SIZE;
 
                     con.fillStyle="red";
                     con.fillRect(px,py, BLOCK_SIZE,BLOCK_SIZE );
@@ -48,12 +51,16 @@
             switch( e.keyCode )
             {
                 case 37: //左
+                    tetro_x--;
                     break;
                 case 38: //上
+                    tetro_y--;
                     break;
                 case 39: //右
+                    tetro_x++;
                     break;
                 case 40: //下
+                    tetro_y++;
                     break;
                 case 32: //スペース
                     break;
