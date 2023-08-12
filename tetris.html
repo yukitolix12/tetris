@@ -57,11 +57,22 @@
         field[19][0] = 1;
         field[19][9] = 1;
 
-        drawField();
-        drawTetro();
+        drawAll();
 
-        //フィールドを表示する
-        function drawField()
+        //ブロック一つを描画
+        function drawBlock(x,y)
+        {
+            let px = x * BLOCK_SIZE;
+            let py = y * BLOCK_SIZE;
+
+            con.fillStyle="red";
+            con.fillRect(px,py, BLOCK_SIZE,BLOCK_SIZE );
+            con.strokeStyle="black";
+            con.strokeRect(px,py, BLOCK_SIZE,BLOCK_SIZE );
+        }
+
+        //全部描画する
+        function drawAll()
         {
             con.clearRect(0,0,SCREEN_W,SCREEN_H);
 
@@ -71,35 +82,18 @@
                 {
                     if( field[y][x] )
                     {
-                        let px = x * BLOCK_SIZE;
-                        let py = y * BLOCK_SIZE;
-
-                        con.fillStyle="red";
-                        con.fillRect(px,py, BLOCK_SIZE,BLOCK_SIZE );
-                        con.strokeStyle="black";
-                        con.strokeRect(px,py, BLOCK_SIZE,BLOCK_SIZE );
+                        drawBlock(x,y);  
                     }
                 }
             }
-        }
-
-        //テトロミノを表示する
-        function drawTetro()
-        {
-            
+        
             for(let y=0; y<TETRO_SIZE ; y++ )
             {
                 for(let x=0; x<TETRO_SIZE ; x++ )
                 {
                     if( tetro[y][x] )
                     {
-                        let px = (tetro_x + x) * BLOCK_SIZE;
-                        let py = (tetro_y + y) * BLOCK_SIZE;
-
-                        con.fillStyle="red";
-                        con.fillRect(px,py, BLOCK_SIZE,BLOCK_SIZE );
-                        con.strokeStyle="black";
-                        con.strokeRect(px,py, BLOCK_SIZE,BLOCK_SIZE );
+                        drawBlock(tetro_x+x,tetro_y+y);
                     }
                 }
             }
@@ -125,8 +119,7 @@
                 case 32: //スペース
                     break;
             }
-            drawField();
-            drawTetro();
+            drawAll();
         }
 
     </script>
