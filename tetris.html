@@ -35,7 +35,7 @@
         
         const TETRO_TYPES = [
             [], //0.空っぽ
-            
+
             [                   //1. I
                 [ 0, 0, 0, 0 ],
                 [ 1, 1, 1, 1 ],
@@ -81,18 +81,15 @@
         ];
 
         //テトロミノ本体
-        let tetro = [
-            [ 0, 0, 0, 0 ],
-            [ 1, 1, 0, 0 ],
-            [ 0, 1, 1, 0 ],
-            [ 0, 0, 0, 0 ]
-        ];
+        let tetro;
         //テトロミノの座標
         let tetro_x = 0;
         let tetro_y = 0;
 
         //フィールドの中身
         let field = [];
+
+        tetro = TETRO_TYPES[2];
         
         init();
         drawAll();
