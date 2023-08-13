@@ -156,6 +156,13 @@
 
         function dropTetro()
         {
+            if( checkMove( 0, 1) )tetro_y++;
+            else
+            {
+                fixTetro();
+            }
+
+            drawAll();
         }
 
         //キーボードが押された時の処理
