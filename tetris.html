@@ -9,6 +9,9 @@
     <canvas id="can"></canvas>
     <script>
 
+        //落ちるスピード
+        const GAME_SPEED = 1000;
+
         //フィールドサイズ
         const FIELD_COL = 10;
         const FIELD_ROW = 20;
@@ -45,6 +48,8 @@
         
         init();
         drawAll();
+
+        setInterval( dropTetro, GAME_SPEED );
         
         //初期化
         function init()
