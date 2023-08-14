@@ -229,8 +229,11 @@
             else
             {
                 fixTetro();
-                tetro_x = 0;
-                tetro_y = 0;
+                
+                tetro_t = Math.floor( Math.random()*(TETRO_TYPES.length-1) )+1;
+                tetro = TETRO_TYPES[ tetro_t];
+                tetro_x = START_X;
+                tetro_y = START_Y;
             }
 
             drawAll();
