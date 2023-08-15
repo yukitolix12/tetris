@@ -230,8 +230,15 @@
                         //本体
                         drawBlock(tetro_x+x,tetro_y+y, tetro_t);
                     }
+                    //ネクストテトロ
+                    if( TETRO_TYPES[tetro_n][y][x] )
+                    {
+                        drawBlock(13+x, 4+y, tetro_n );
+                    }
                 }
             }
+
+            //インフォメーション
 
             if(over)
             {
