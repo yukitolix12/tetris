@@ -93,10 +93,23 @@
             [                   //8
                 [ 0, 0, 0, 0 ],
                 [ 0, 0, 1, 0 ],
-                [ 0, 1, 0, 0 ],
+                [ 0, 1, 1, 0 ],
                 [ 0, 0, 0, 0 ]
             ],
         ];
+
+        //画像と効果音(おまけ)
+        let bgimage;
+        bgimage= new Image();
+        //bgimage.src="back.png";
+        bgimage.src="img_1.jpg";
+        let blimage;
+        blimage= new Image();
+        blimage.src="block.png";
+        let se1,se2,se3;
+        se1 = new Audio("se1.mp3");
+        se2 = new Audio("se2.mp2");
+        se3 = new Audio("se3.mp3");
  
     
         //初期位置
@@ -180,7 +193,7 @@
             let px = x * BLOCK_SIZE;
             let py = y * BLOCK_SIZE;
 
-            con.drawImage(blimage
+            con.drawImage(blimage,
                c*BLOCK_SIZE,0, BLOCK_SIZE,BLOCK_SIZE,
                px,py,          BLOCK_SIZE,BLOCK_SIZE);
         }
@@ -365,6 +378,14 @@
                     }
                 }
 
+                if(lines)
+                {
+                    se3.pause();
+                    se3.play();
+                    lines += linec;
+                    score+=100*(2**(linec-1));
+                    if(speed<GAME_SPEED-10)speed+=10;
+                }
                 
             }
         }
@@ -404,17 +425,22 @@
                     if( checkMove( -1, 0) )tetro_x--;
                     break;
                 case 38: //上
-                    if( checkMove( 0, -1) )tetro_y--;
+                    //if( checkMove( 0, -1) )tetro_y--;
                     break;
                 case 39: //右
                     if( checkMove( 1, 0) )tetro_x++;
                     break;
                 case 40: //下
-                    if( checkMove( 0, 1) )tetro_y++;
+                    while( checkMove( 0, 1) )tetro_y++;
                     break;
                 case 32: //スペース
                     let ntetro = rotate();
-                    if( checkMove( 0, 0, ntetro) ) tetro = ntetro;
+                    if( checkMove( 0, 0, ntetro) )
+                    {
+                        se2.pause();
+                        se2.play();
+                        tetro = ntetro;
+                    }
                     break;
             }
             drawAll();
