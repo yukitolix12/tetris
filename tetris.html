@@ -233,13 +233,19 @@
             }
         }
 
-        //　ブロックの落ちる処理
+        //ラインが揃ったかチェックして消す
+        function checkLine()
+        {
+        }
+
+        //ブロックの落ちる処理
         function dropTetro()
         {
             if( checkMove( 0, 1) )tetro_y++;
             else
             {
                 fixTetro();
+                checkLine();
 
                 tetro_t = Math.floor( Math.random()*(TETRO_TYPES.length-1) )+1;
                 tetro = TETRO_TYPES[ tetro_t];
