@@ -180,17 +180,25 @@
             let px = x * BLOCK_SIZE;
             let py = y * BLOCK_SIZE;
 
-            con.fillStyle=TETRO_COLORS[c];
-            con.fillRect(px,py, BLOCK_SIZE,BLOCK_SIZE );
-            con.strokeStyle="black";
-            con.strokeRect(px,py, BLOCK_SIZE,BLOCK_SIZE );
+            con.drawImage(blimage
+               c*BLOCK_SIZE,0, BLOCK_SIZE,BLOCK_SIZE,
+               px,py,          BLOCK_SIZE,BLOCK_SIZE);
         }
 
         //全部描画する
         function drawAll()
         {
-            con.clearRect(0,0,SCREEN_W,SCREEN_H);
+            //背景を描画
+            con.drawImage(bgimage, -100,-100);
+            //フィールドの枠を描く
+            con.strokeStyle="rgba(80,160,255,0.1)";
+            con.strokeRect(OFFSET_X-6,OFFSET_Y-6,SCREEN_W+12,SCREEN_H+12);
+            con.strokeStyle="rgba(80,160,255,0.5)";
+            con.strokeRect(OFFSET_X-2,OFFSET_Y-2,SCREEN_W+4,SCREEN_H+4);
+            con.fillStyle="rgba(0,0,0,0.4)";
+            con.fillRect(OFFSET_X,OFFSET_Y,SCREEN_W,SCREEN_H);
 
+            //フィールド描画
             for(let y=0; y<FIELD_ROW ; y++ )
             {
                 for(let x=0; x<FIELD_COL ; x++ )
