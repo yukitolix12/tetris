@@ -238,7 +238,27 @@
                 }
             }
 
-            //インフォメーション
+            //インフォメーション表示
+            function drawInfo()
+            {
+                let w;
+                con.fillStyle="white";
+
+                let s="NEXT";
+                con.fillText(s,410,120);
+
+                s="SCORE";
+                con.fillText(s,410,300);
+                s=""+score;
+                w = con.measureText(s).width;
+                con.fillText(s,560-w,340);
+
+                s="LINES";
+                w = con.measureText(s).width;
+                s=""+line;
+                w = con.measureText(s).width;
+                con.fillText(s, 560-w, 440);
+            }
 
             if(over)
             {
@@ -344,6 +364,8 @@
                         }
                     }
                 }
+
+                
             }
         }
 
