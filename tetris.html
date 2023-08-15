@@ -145,10 +145,33 @@
                      field[y][x] = 0;
                 }
             }
-            //テスト
+
+            //最初のテトロのためのネクストを入れる
+            tetro_n = Math.floor( Math.random()*(TETRO_TYPES.length-1))+1;
+
+            //テトロをセットして描画して開始！
+            setTetro();
+            drawAll();
+            setInterval( dropTetro, GAME_SPEED-speed );
+
+            /*テスト
             field[5][8] = 1;
             field[19][0] = 1;
             field[19][9] = 1;
+            */
+        }
+
+        //テトロをネクストで初期化
+        function setTetro()
+        {
+            //ネクストを現在のテトロにする
+            tetro_t = tetro_n;
+            tetro = TETRO_TYPES[ tetro_t ];
+            tetro_n = Math.floor( Math.random()*(TETRO_TYPES.length-1))+1;
+
+            //位置を初期化する
+            tetro_x = START_X;
+            tetro_y = START_Y;
         }
 
         //ブロック一つを描画する
