@@ -217,12 +217,17 @@
             let plus=0;
             while( checkMove(0,plus+1) )plus++;
         
+            //テトロミノを描画
             for(let y=0; y<TETRO_SIZE ; y++ )
             {
                 for(let x=0; x<TETRO_SIZE ; x++ )
                 {
+                    //テトロ本体
                     if( tetro[y][x] )
                     {
+                        //着地点
+                        drawBlock(tetro_x+x, tetro_y+y+plus, 0);
+                        //本体
                         drawBlock(tetro_x+x,tetro_y+y, tetro_t);
                     }
                 }
