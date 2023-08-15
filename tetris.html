@@ -173,6 +173,19 @@
                     }
                 }
             }
+
+            if(over)
+            {
+                let s = "GAME OVER";
+                con.font = "40px 'MS ゴシック'";
+                let w = con.measureText(s).width;
+                let x = SCREEN_W/2 - w/2;
+                let y = SCREEN_H/2 - 20;
+                con.lineWidth = 4;
+                con.strokeText(s,x,y);
+                con.fillStyle = "white";
+                con.fillText(s,x,y);
+            }
         }
         
         //ブロックの衝突判定
@@ -271,6 +284,7 @@
         //ブロックの落ちる処理
         function dropTetro()
         {
+            if(over)return;
             if( checkMove( 0, 1) )tetro_y++;
             else
             {
@@ -294,6 +308,8 @@
         //キーボードが押された時の処理
         document.onkeydown = function(e)
         {
+            if(over)return;
+
             switch( e.keyCode )
             {
                 case 37: //左
